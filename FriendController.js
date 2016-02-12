@@ -1,5 +1,12 @@
 var app = angular.module('myApp');
+
 app.controller('FriendController', function($scope) {
+
+  $scope.sortPredicate = "name";
+  $scope.sortDescend = "+";
+  $scope.predicate = function () {
+    return $scope.sortDescend + $scope.sortPredicate;
+  }
 
   $scope.friends =
   [
@@ -434,6 +441,5 @@ app.controller('FriendController', function($scope) {
       "$$hashKey": "02U"
     }
   ]
-
 
 });
