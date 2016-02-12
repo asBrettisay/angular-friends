@@ -49,7 +49,7 @@
       </ul>
 
       <!--Loop through friends and display each-->
-      <ul ng-repeat="friend in friends | filter: {name: searchName, $: searchPlace } | orderBy:sortPredicate:sortDescend">
+      <ul ng-repeat="friend in friendsMapped | filter: {name: searchName, $: searchPlace } | orderBy:sortPredicate:sortDescend">
 
         <li class='friend'>
         <img class="profile-pic" src="{{friend.pic_square }}">

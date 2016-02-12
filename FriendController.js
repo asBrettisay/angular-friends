@@ -452,6 +452,15 @@ app.controller('FriendController', function($scope) {
       "friend_count": 855,
       "$$hashKey": "02U"
     }
-  ]
+  ];
+
+  $scope.friendsMapped = $scope.friends.map(function(friend) {
+    if (!(friend.current_location)) {
+      friend.current_location = {
+        "name": ""
+      }
+    }
+    return friend;
+  });
 
 });
