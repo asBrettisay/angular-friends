@@ -3,10 +3,22 @@ var app = angular.module('myApp');
 app.controller('FriendController', function($scope) {
 
   $scope.sortPredicate = "name";
-  $scope.sortDescend = "+";
+  $scope.sortDescend = false;
   $scope.predicate = function () {
     return $scope.sortDescend + $scope.sortPredicate;
   }
+
+  $scope.sortOptions = [{
+                          "Name": "name",
+                          "#Friends": "friend_count",
+                          "City": "current_location.city",
+                          "State": "current_location.state",
+                          "Country": "current_location.country"
+                        },
+                        {
+                          "Ascending": false,
+                          "Descending": true
+                        }];
 
   $scope.friends =
   [

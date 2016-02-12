@@ -19,17 +19,10 @@
           <input ng-model="searchPlace" class="form-control" placeholder="Search Location">
 
 
-          <select ng-model ="sortPredicate" class="input-medium">
-            <option value="name">Name</option>
-            <option value="friend_count">#Friends</option>
-            <option value="current_location.city">City</option>
-            <option value="current_location.state">State</option>
-            <option value="current_location.country">Country</option>
+          <select ng-model ="sortPredicate" class="input-medium" ng-options="val as prop for (prop, val) in sortOptions[0]">
           </select>
 
-          <select ng-model="sortDescend" class="input-medium">
-            <option value="+">Ascending</option>
-            <option value="-">Descending</option>
+          <select ng-model="sortDescend" class="input-medium" ng-options="val as prop for (prop, val) in sortOptions[1]">
           </select>
 
         </div>
@@ -56,7 +49,7 @@
       </ul>
 
       <!--Loop through friends and display each-->
-      <ul ng-repeat="friend in friends | filter: {name: searchName, $: searchPlace } | orderBy:predicate()">
+      <ul ng-repeat="friend in friends | filter: {name: searchName, $: searchPlace } | orderBy:sortPredicate:sortDescend">
 
         <li class='friend'>
         <img class="profile-pic" src="{{friend.pic_square }}">
